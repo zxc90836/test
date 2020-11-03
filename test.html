@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    Reference: 
+    https://codepen.io/knaman2609/pen/Zbyjvv
+    https://pixabay.com/illustrations/donald-trump-america-president-5103361/ 
+-->
+
+<head>
+    <meta charset="utf-8">
+    <title>Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+            background: #eee;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: #222;
+            font-size: 14px;
+            line-height: 26px;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 700px;
+            background: #fff;
+            margin: 0px auto 0px;
+            box-shadow: 1px 1px 2px #DAD7D7;
+            border-radius: 3px;
+            padding: 40px;
+            margin-top: 50px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .full-name {
+            font-size: 40px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .first-name {
+            font-weight: 700;
+        }
+
+        .last-name {
+            font-weight: 300;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .email,
+        .phone {
+            color: #999;
+            font-weight: 300;
+        }
+
+        .separator {
+            height: 10px;
+            display: inline-block;
+            border-left: 2px solid #999;
+            margin: 0px 10px;
+        }
+
+        .position {
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: underline;
+        }
+
+        .details {
+            line-height: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section:last-of-type {
+            margin-bottom: 0px;
+        }
+
+        .section__title {
+            letter-spacing: 2px;
+            color: #54AFE4;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section__list-item {
+            margin-bottom: 40px;
+        }
+
+        .section__list-item:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .left,
+        .right {
+            vertical-align: top;
+            display: inline-block;
+        }
+
+        .left {
+            width: 60%;
+        }
+
+        .right {
+            text-align: right;
+            width: 39%;
+        }
+
+        .name {
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            font-style: italic;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+        .skills__item {
+            margin-bottom: 10px;
+        }
+
+        input {
+            display: none;
+        }
+
+        label {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #C3DEF3;
+            border-radius: 20px;
+            margin-right: 3px;
+        }
+
+        input:checked+label {
+            background: #79A9CE;
+        }
+    </style>
+</head>
+
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+
+    <div class="container">
+        <div class="header">
+            <div class="full-name">
+                <span class="first-name">老</span>
+                <span class="last-name">趙</span>
+            </div>
+            <div class="contact-info">
+                <span class="email">Email: </span>
+                <span class="email-val">00857207@mail.ntou.edu.tw</span>
+                <span class="separator"></span>
+                <span class="phone">Phone: </span>
+                <span class="phone-val">111-222-3333</span>
+            </div>
+
+            <div>
+                <img src="data:image/jpeg;base64,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" width="60%">
+            </div>
+
+            <div class="about">
+                <span class="position">Front-End Developer </span>
+                <span class="desc">
+                    I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm
+                    motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.
+                </span>
+            </div>
+        </div>
+        <div class="details">
+            <div class="section">
+                <div class="section__title">Experience</div>
+                <div class="section__list">
+                    <div class="section__list-item">
+                        <div class="left">
+                            <div class="name">KlowdBox</div>
+                            <div class="addr">San Fr, CA</div>
+                            <div class="duration">Jan 2011 - Feb 2015</div>
+                        </div>
+                        <div class="right">
+                            <div class="name">Fr developer</div>
+                            <div class="desc">did This and that</div>
+                        </div>
+                    </div>
+                    <div class="section__list-item">
+                        <div class="left">
+                            <div class="name">Akount</div>
+                            <div class="addr">San Monica, CA</div>
+                            <div class="duration">Jan 2011 - Feb 2015</div>
+                        </div>
+                        <div class="right">
+                            <div class="name">Fr developer</div>
+                            <div class="desc">did This and that</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="section">
+                <div class="section__title">Education</div>
+                <div class="section__list">
+                    <div class="section__list-item">
+                        <div class="left">
+                            <div class="name">Sample Institute of technology</div>
+                            <div class="addr">San Fr, CA</div>
+                            <div class="duration">Jan 2011 - Feb 2015</div>
+                        </div>
+                        <div class="right">
+                            <div class="name">Fr developer</div>
+                            <div class="desc">did This and that</div>
+                        </div>
+                    </div>
+                    <div class="section__list-item">
+                        <div class="left">
+                            <div class="name">Akount</div>
+                            <div class="addr">San Monica, CA</div>
+                            <div class="duration">Jan 2011 - Feb 2015</div>
+                        </div>
+                        <div class="right">
+                            <div class="name">Fr developer</div>
+                            <div class="desc">did This and that</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="section">
+                <div class="section__title">Projects</div>
+                <div class="section__list">
+                    <div class="section__list-item">
+                        <div class="name">DSP</div>
+                        <div class="text">I am a front-end developer with more than 3 years of experience writing html,
+                            css, and js. I'm motivated, result-focused and seeking a successful team-oriented company
+                            with opportunity to grow.</div>
+                    </div>
+
+                    <div class="section__list-item">
+                        <div class="name">DSP</div>
+                        <div class="text">I am a front-end developer with more than 3 years of experience writing html,
+                            css, and js. I'm motivated, result-focused and seeking a successful team-oriented company
+                            with opportunity to grow. <a href="/login">link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section__title">Skills</div>
+                <div class="skills">
+                    <div class="skills__item">
+                        <div class="left">
+                            <div class="name">
+                                Javascript
+                            </div>
+                        </div>
+                        <div class="right">
+                            <input id="ck1" type="checkbox" checked />
+
+                            <label for="ck1"></label>
+                            <input id="ck2" type="checkbox" checked />
+
+                            <label for="ck2"></label>
+                            <input id="ck3" type="checkbox" />
+
+                            <label for="ck3"></label>
+                            <input id="ck4" type="checkbox" />
+                            <label for="ck4"></label>
+                            <input id="ck5" type="checkbox" />
+                            <label for="ck5"></label>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="skills__item">
+                    <div class="left">
+                        <div class="name">
+                            CSS</div>
+                    </div>
+                    <div class="right">
+                        <input id="ck1" type="checkbox" checked />
+
+                        <label for="ck1"></label>
+                        <input id="ck2" type="checkbox" checked />
+
+                        <label for="ck2"></label>
+                        <input id="ck3" type="checkbox" />
+
+                        <label for="ck3"></label>
+                        <input id="ck4" type="checkbox" />
+                        <label for="ck4"></label>
+                        <input id="ck5" type="checkbox" />
+                        <label for="ck5"></label>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="section">
+                <div class="section__title">
+                    Interests
+                </div>
+                <div class="section__list">
+                    <div class="section__list-item">
+                        Football, programming.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
